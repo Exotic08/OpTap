@@ -1,7 +1,10 @@
 /**
  * EdTech Quiz Logic Controller
- * Handles parsing, UI rendering, timer, and result analytics.
+ * Tích hợp Firebase REST API để đếm số lượt làm bài
  */
+
+// ĐƯỜNG DẪN DATABASE FIREBASE CỦA BẠN
+const FIREBASE_URL = "https://ontap-59972-default-rtdb.firebaseio.com/quizStats.json";
 
 document.addEventListener("DOMContentLoaded", () => {
     // --- STATE VARIABLES ---
@@ -18,29 +21,73 @@ document.addEventListener("DOMContentLoaded", () => {
     const timerDisplay = document.getElementById('timer-display');
     const timeSpan = timerDisplay.querySelector('span');
     const reviewContainer = document.getElementById('review-container');
+    const attemptsSpan = document.querySelector('#attempts-display span');
 
     // --- INITIALIZATION ---
     init();
 
     async function init() {
         try {
+            // Lấy tổng số lượt làm bài từ Firebase khi vừa vào web
+            fetchGlobalAttempts();
+
+            // ĐIỂM MỚI: Thêm query string thời gian thực để xóa Cache trình duyệt
             const rawData = await fetchQuizData('data.txt');
             questions = parseData(rawData);
             startQuiz();
         } catch (error) {
-            loadingSection.innerHTML = `<p style="color:red;">Lỗi tải dữ liệu: ${error.message}. Vui lòng chạy ứng dụng qua một Web Server (Live Server).</p>`;
+            loadingSection.innerHTML = `<p style="color:red;">Lỗi tải dữ liệu: ${error.message}</p>`;
         }
     }
 
     async function fetchQuizData(url) {
-        const response = await fetch(url);
+        // Cache Busting: Bắt trình duyệt tải file mới nhất
+        const cacheBuster = `?t=${new Date().getTime()}`;
+        const response = await fetch(url + cacheBuster);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.text();
     }
 
-    /**
-     * Parses the `.txt` string into an array of structured objects.
-     */
+    async function fetchGlobalAttempts() {
+        try {
+            const response = await fetch(FIREBASE_URL);
+            const data = await response.json();
+            if (data && data.totalAttempts) {
+                attemptsSpan.textContent = data.totalAttempts;
+            } else {
+                attemptsSpan.textContent = 0;
+            }
+        } catch (error) {
+            console.error("Không thể lấy dữ liệu bộ đếm từ Firebase:", error);
+            attemptsSpan.textContent = "Lỗi";
+        }
+    }
+
+    async function incrementGlobalAttempts() {
+        try {
+            // 1. Lấy dữ liệu hiện tại
+            const response = await fetch(FIREBASE_URL);
+            let data = await response.json();
+            
+            let currentTotal = (data && data.totalAttempts) ? data.totalAttempts : 0;
+            currentTotal += 1;
+
+            // 2. Gửi dữ liệu đã cộng dồn lên Firebase
+            await fetch(FIREBASE_URL, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ totalAttempts: currentTotal })
+            });
+
+            // 3. Cập nhật giao diện
+            attemptsSpan.textContent = currentTotal;
+        } catch (error) {
+            console.error("Không thể cập nhật bộ đếm lên Firebase:", error);
+        }
+    }
+
     function parseData(text) {
         const lines = text.split('\n');
         const parsedQuestions = [];
@@ -50,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
             line = line.trim();
             if (!line) return;
 
-            // Match Question
             let qMatch = line.match(/^Ask\d+:\s*(.*)/i);
             if (qMatch) {
                 if (currentQ) parsedQuestions.push(currentQ);
@@ -58,19 +104,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     questionText: qMatch[1],
                     options: [],
                     key: null,
-                    type: 'single' // Default to single choice
+                    type: 'single'
                 };
                 return;
             }
 
-            // Match Answer options
             let aMatch = line.match(/^answer\d+:\s*(.*)/i);
             if (aMatch && currentQ) {
                 currentQ.options.push(aMatch[1]);
                 return;
             }
 
-            // Match Key
             let kMatch = line.match(/^Key:\s*(.*)/i);
             if (kMatch && currentQ) {
                 const keyStr = kMatch[1];
@@ -88,15 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return parsedQuestions;
     }
 
-    // --- UI RENDERING & QUIZ LOGIC ---
-
     function startQuiz() {
         renderQuestions();
         loadingSection.classList.add('hidden');
         resultSection.classList.add('hidden');
         quizSection.classList.remove('hidden');
         
-        // Reset form & Timer
         quizForm.reset();
         startTime = Date.now();
         timerDisplay.classList.remove('hidden');
@@ -129,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 label.className = 'option-label';
 
                 const input = document.createElement('input');
-                // Use 'radio' for single, 'checkbox' for multi
                 input.type = q.type === 'single' ? 'radio' : 'checkbox';
                 input.name = `question_${qIndex}`;
                 input.value = optIndex + 1;
@@ -153,13 +193,14 @@ document.addEventListener("DOMContentLoaded", () => {
         timeSpan.textContent = `${m}:${s}`;
     }
 
-    // --- SUBMISSION & RESULT CALCULATION ---
-
-    quizForm.addEventListener('submit', (e) => {
+    quizForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         clearInterval(timerInterval);
         timerDisplay.classList.add('hidden');
         
+        // ĐIỂM MỚI: Gọi hàm cập nhật số lượt lên Database
+        await incrementGlobalAttempts();
+
         const timeTakenMs = Date.now() - startTime;
         evaluateResults(timeTakenMs);
     });
@@ -174,14 +215,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const isCorrect = checkAnswer(q, qIndex, formData);
             if (isCorrect) correctCount++;
             
-            // Build detailed review snippet
             const reviewItem = buildReviewItem(q, qIndex, isCorrect, formData);
             reviewFragment.appendChild(reviewItem);
         });
 
         reviewContainer.appendChild(reviewFragment);
 
-        // Update Stats UI
         const accuracy = Math.round((correctCount / questions.length) * 100);
         const m = String(Math.floor(timeTakenMs / 60000)).padStart(2, '0');
         const s = String(Math.floor((timeTakenMs % 60000) / 1000)).padStart(2, '0');
@@ -192,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         quizSection.classList.add('hidden');
         resultSection.classList.remove('hidden');
+        window.scrollTo(0, 0); // Tự động cuộn lên đầu xem kết quả
     }
 
     function checkAnswer(q, qIndex, formData) {
@@ -199,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const selected = formData.get(`question_${qIndex}`);
             return selected && parseInt(selected, 10) === q.key;
         } else {
-            // Multi-choice: Check if selected boxes match the binary array
             const selectedArr = formData.getAll(`question_${qIndex}`).map(Number);
             let isMatch = true;
             q.key.forEach((val, idx) => {
@@ -227,7 +266,6 @@ document.addEventListener("DOMContentLoaded", () => {
         feedback.textContent = isCorrect ? '✓ Chính xác' : '✗ Chưa chính xác';
         div.appendChild(feedback);
 
-        // Show correct answers based on type
         const correctInfo = document.createElement('p');
         correctInfo.style.marginTop = '10px';
         correctInfo.style.fontSize = '0.9rem';
@@ -243,10 +281,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return div;
     }
 
-    // --- RETAKE LOGIC ---
     document.getElementById('retake-btn').addEventListener('click', () => {
         startQuiz();
+        fetchGlobalAttempts(); // Lấy số mới nhất trước khi làm lại
     });
 });
-
-
