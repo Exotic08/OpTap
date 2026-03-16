@@ -187,35 +187,35 @@ answer3: Chịu ảnh hưởng sâu sắc của văn minh Ấn Độ và Ai Cậ
 answer4: Nhu cầu trị thủy và chống ngoại xâm ngày càng bức thiết.
 Key: 1
 
-Ask28: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Nền văn minh của người Việt cổ với biểu hiện tượng trống đồng Đông Sơn thực chất là một nền văn minh nông nghiệp trồng lúa nước... đặt cơ sở vững chắc cho toàn bộ sự tồn tại và phát triển của quốc gia - dân tộc sau đó." Hãy đánh giá các nhận định sau:
+Ask28: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Nền văn minh của người Việt cổ với biểu hiện tượng trống đồng Đông Sơn thực chất là một nền văn minh nông nghiệp trồng lúa nước dựa trên nền tảng cộng đồng xóm làng và một cơ cấu chính trị nhà nước phôi thai; không những đã vươn tới một trình độ phát triển khá cao, mà còn xác lập lối sống Việt Nam, truyền thống Việt Nam, đặt cơ sở vững chắc cho toàn bộ sự tồn tại và phát triển của quốc gia - dân tộc sau đó." Hãy đánh giá các nhận định sau:
 answer1: a. Đoạn tư liệu cung cấp thông tin về quá trình xác lập các truyền thống tốt đẹp của dân tộc Việt Nam.
 answer2: b. “Nền văn minh của người Việt cổ với biểu hiện tượng trống đồng Đông Sơn” được nhắc đến trong đoạn tư liệu chính là nền văn minh Văn Lang – Âu Lạc.
 answer3: c. Bản chất của nền văn minh này là một nền văn minh lấy kinh tế nông nghiệp trồng lúa nước là chủ đạo với bộ máy chính quyền đơn giản, sơ khai.
 answer4: d. Toàn bộ sự tồn tại và phát triển của quốc gia - dân tộc Việt Nam sau này phụ thuộc hoàn toàn vào nền văn minh đầu tiên của người Việt cổ.
 Key: 0,1,1,0
 
-Ask29: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau về văn minh Chăm-pa: "Chăm-pa là một trong những nền văn hóa chịu ảnh hưởng mạnh mẽ của văn hóa Ấn Độ... Đề tài thể hiện trên các phẩm điêu khắc Chăm-pa phản ánh đậm nét nội dung tư tưởng trong thần thoại Ấn Độ!". Hãy đánh giá các nhận định sau:
+Ask29: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau về văn minh Chăm-pa: "ChămChăm – pa là một trong những nền văn hóa chịu ảnh hưởng mạnh mẽ của văn hóa Ấn Độ trên hầu hết các lĩnh vực chính trị, tôn giáo và văn hóa – nghệ thuật. Nghệ thuật kiến trúc đền tháp cũng như các tác phẩm điêu khắc Chăm – pa ở Thừa Thiên Huế đều nằm trong truyền thống chung của nghệ thuật Chăm – pa ở miền Trung...; đề tài thể hiện trên các phẩm điêu khắc Chăm – pa ở khu vực phản ánh một cách đậm nét nội dung tư tưởng trong thần thoại Ấn Độ! Đó là hệ thống thần linh trong Hin – đu giáo như Si – va, Bra – ma, Vit – xnu, Pa – va – ti, các vị thần tám phương bốn hướng, Ra – va – na hay các con vật huyền thoại như bò thần Nan – đin, chim thần Ga – ru – đa, thủy quái Ma – ka – ra". Hãy đánh giá các nhận định sau:
 answer1: a. Đoạn tư liệu cung cấp thông tin về ảnh hưởng của văn hóa Ấn Độ đến văn minh Chăm-pa trên tất cả các lĩnh vực.
 answer2: b. Chỉ có nghệ thuật kiến trúc điêu khắc Chăm-pa ở Thừa Thiên Huế chịu ảnh hưởng sâu sắc của văn minh Ấn Độ.
 answer3: c. Các nhân vật trong thần thoại Ấn Độ đã trở thành đề tài chủ yếu trong các tác phẩm điêu khắc của cư dân Chăm-pa.
 answer4: d. Các vị thần như Si-va, Bra-ma, Vit-xnu được thờ tự trong đền tháp Chăm đều là các vị thần của đạo Hin-đu và đạo Phật.
 Key: 0,0,1,0
 
-Ask30: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Hình thành trên một không gian tương đối rộng lớn với cả ba vùng cảnh quan... dấu tích văn hóa Chăm còn được phát hiện trên vùng cao nguyên hiện nay như các tỉnh: Gia Lai, Kon Tum, Đắc Lắc, Lâm Đồng...". Hãy đánh giá các nhận định sau:
+Ask30: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Hình thành trên một không gian tương đối rộng lớn với cả ba vùng cảnh quan đồng thời là ba không gian sinh thái tự nhiên: núi rừng, châu thổ và duyên hải, các di tích văn hóa Chăm tìm được ở miền Trung trải dọc từ Quảng Bình (di tích Cao Lao Hạ) ở phía bắc đến Ninh Thuận, Bình Thuận, Đồng Nai ở phía nam. Trong các vòng tiếp giao xã hội và văn hóa rộng lớn đó, dấu tích văn hóa Chăm còn được phát hiện trên vùng cao nguyên hiện nay như các tỉnh: Gia Lai, Kon Tum, Đắc Lắc, Lâm Đồng...". Hãy đánh giá các nhận định sau:
 answer1: a. Vương quốc Chăm-pa là một quốc gia rộng lớn có lãnh thổ trải rộng từ miền Bắc vào miền Nam Việt Nam.
 answer2: b. Văn minh Chăm-pa được hình thành trên một không gian rộng lớn với nhiều loại địa hình.
 answer3: c. Hiện nay, các di tích văn hóa Chăm không chỉ được tìm thấy ở các tỉnh miền Trung mà còn được tìm thấy ở nhiều tỉnh thuộc khu vực Tây Nguyên.
 answer4: d. Di tích Cao Lao Hạ thuộc khu vực Nam Trung Bộ được tìm thấy là một trong các di tích thuộc văn hóa Chăm-pa.
 Key: 0,1,1,0
 
-Ask31: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Nhâm Ngọ, năm thứ tư [1042]... Ban “Hình thư”. Trước kia, việc kiện tụng trong nước phiền nhiễu... Vua lấy làm thương xót, sai Trung thư san định luật lệnh... để cho người xem dễ hiểu...". Hãy đánh giá các nhận định sau:
+Ask31: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "Nhâm Ngọ, năm thứ tư [1042]... Ban “Hình thư”. Trước kia, việc kiện tụng trong nước phiền nhiễu, quan lại giữ luật pháp câu nệ luật văn, cốt làm cho khắc nghiệt, thậm chí có người bị oan uổng quá đáng. Vua lấy làm thương xót, sai Trung thư san định luật lệnh, châm chước cho thích dụng với thời thế, chia ra môn loại, biên thành điều khoản, làm thành sách “Hình thư” của một triều đại, để cho người xem dễ hiểu. Sách làm xong, xuống chiếu ban hành, dân lấy làm tiện". Hãy đánh giá các nhận định sau:
 answer1: a. Bộ luật Hình thư ra đời nhằm giải quyết những bất cập, hạn chế trong việc xét xử, kiện tụng trước đó.
 answer2: b. Bộ luật Hình thư được ban hành vào thế kỉ XI dưới vương triều nhà Trần.
 answer3: c. Hình thư là bộ luật thành văn đầu tiên của nước ta và còn được lưu giữ nguyên vẹn đến ngày nay.
 answer4: d. Bộ luật Hình thư được ban hành giúp cho việc xử án trong nước được rõ ràng và thuận lợi hơn.
 Key: 1,0,0,1
 
-Ask32: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "...sự ra đời của nước Văn Lang trên cơ sở nền văn hóa Đông Sơn rực rỡ... tồn tại vào khoảng thế kỉ thứ VII đến thế kỉ thứ III TCN... Có thể coi nhà nước Văn Lang là nhà nước đầu tiên trong lịch sử của dân tộc Việt Nam.". Hãy đánh giá các nhận định sau:
+Ask32: [CÂU HỎI ĐÚNG/SAI] Đọc đoạn tư liệu sau: "...sự ra đời của nước Văn Lang trên cơ sở nền văn hóa Đông Sơn rực rỡ - thời đại đồng thau phát triển đến đỉnh cao và bước sang thời đại sắt sớm tồn tại vào khoảng thế kỉ thứ VII đến thế kỉ thứ III TCN. Nước Văn Lang còn là biểu hiện của sự liên kết các cộng đồng bộ lạc giữa khu vực đồng bằng sông Hồng với các khu vực đồng bằng sông Mã, sông Cả vùng Thanh – Nghệ trên nền tảng một nền văn hóa chung đa sắc thái. Văn hóa Đông Sơn, nhà nước Văn Lang tuy còn sơ khai, chất phác nhưng cũng đánh dấu sự trưởng thành, phát triển vượt bậc của các cộng đồng dân cư bản địa, một bước chuyển “cách mạng” từ thời đại hoang sơ nguyên thủy sang thời đại văn minh hơn. Có thể coi nhà nước Văn Lang là nhà nước đầu tiên trong lịch sử của dân tộc Việt Nam". Hãy đánh giá các nhận định sau:
 answer1: a. Nhà nước Văn Lang ra đời vào thế kỉ III TCN trên cơ sở liên kết các bộ lạc ở sông Hồng, sông Mã và sông Cả.
 answer2: b. Dưới thời kì Văn Lang, cư dân phổ biến sử dụng công cụ lao động bằng đồng thau và bước đầu sử dụng đồ sắt.
 answer3: c. Nhà nước Văn Lang tồn tại trong khoảng 4 thế kỉ, được coi là nhà nước cổ đại đầu tiên của lịch sử Việt Nam.
